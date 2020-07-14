@@ -1,7 +1,7 @@
 # TechCrunch Data Warehouse and pipeline
 ## Workflow
 
-### Redshift COnfiguration
+### Redshift Configuration
 - create_cluster.sh contains command to create the redshift cluster.
   ```
     #!/bin/bash +xe
@@ -34,3 +34,18 @@
   [DATA_S3]
   ETL_TEMP_S3_BUCKET=<DATA_S3>
  ```
+ - export_env_variables.sh contain environment variables
+ ```
+  export USERNAME=<REDSHIFT_USERNAME>
+  export PASSWORD=<REDSHIFT_PASSWORD>
+  export SECURITY_GROUP=<REDSHIFT_SECURITY_GROUP>
+  export IAM_ROLE=<REDSHIFT_IAM_ROLE>
+ ```
+ ### Create Tables
+ creating the tables requires to 2 files, the create_tables.sql and create_tables.py
+ - The create_tables.sql - this file holds all the create tables sql statement for creating tables in our redshift data warehouse.
+ - The create_tables.py connects to the database and run the create_tables.sql and creates the seperate tables.
+ 
+ 
+My workflow
+create_tables.ql ---> create_tables.py ---> export_env_variables.sh ---> create_cluster.sh ---> config.cfg
