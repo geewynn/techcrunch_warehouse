@@ -2,7 +2,7 @@
 ## Workflow
 
 ### Redshift COnfiguration
-- <b>create_cluster.sh<\b> contains command to create the redshift cluster.
+- create_cluster.sh contains command to create the redshift cluster.
   ```
     #!/bin/bash +xe
     source export_env_variables.sh
