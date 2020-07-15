@@ -33,12 +33,12 @@ CREATE TABLE public.posts (
     number_of_retrieved_comments INTEGER
 )
 
-CREATE TABLE public.authors (
+CREATE TABLE public.comment_review (
     author_id VARCHAR(256) PRIMARY KEY,
     blogger_id VARCHAR(256),
     post_id VARCHAR(256),
     comment_id VARCHAR(256),
     date DATETIME,
-    comment VARCHAR(256),
+    content VARCHAR(256),
     sentiment VARCHAR(256)
 )
