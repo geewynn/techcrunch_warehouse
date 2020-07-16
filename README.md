@@ -46,6 +46,10 @@
  - The create_tables.sql - this file holds all the create tables sql statement for creating tables in our redshift data warehouse.
  - The create_tables.py connects to the database and run the create_tables.sql and creates the seperate tables.
  
+ ### Transformation Files
+Python script in the transformation folder are used to transform the data using spark, the transformed data are then written to a temporary folder in AWS S3 in parquet format.
+
+ 
  
 My workflow
 create_tables.ql ---> create_tables.py ---> export_env_variables.sh ---> create_cluster.sh ---> config.cfg
