@@ -5,11 +5,9 @@ DROP TABLE IF EXISTS public.reviews;
 
 CREATE TABLE public.authors (
     author_id VARCHAR(256) PRIMARY KEY,
-    name VARCHAR(256),
+    author VARCHAR(256),
     meibi VARCHAR(256),
-    meibx VARCHAR(256),
-    avg_num_words_post DOUBLE PRECISION,
-    avg_num_words_post_nostopword DOUBLE PRECISION
+    meibx VARCHAR(256)
 )
 
 CREATE TABLE public.comments (
@@ -33,10 +31,18 @@ CREATE TABLE public.posts (
     number_of_retrieved_comments INTEGER
 )
 
+CREATE TABLE public.word_count (
+    author_id VARCHAR(256) PRIMARY KEY,
+    author VARCHAR(256),
+    word_count_stopwords DOUBLE PRECISION,
+    word_count_nostopwords DOUBLE PRECISION
+)
+
 CREATE TABLE public.comment_review (
     author_id VARCHAR(256) PRIMARY KEY,
-    blogger_id VARCHAR(256),
+    author VARCHAR(256),
     post_id VARCHAR(256),
+    blogger_id VARCHAR(256),
     comment_id VARCHAR(256),
     date DATETIME,
     content VARCHAR(256),
