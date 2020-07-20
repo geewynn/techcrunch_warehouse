@@ -1,4 +1,5 @@
- import airflowlib.emr_util as emr
+from airflowlib import emr_util as emr
+#import airflowlib.emr_util as emr
 from techcrunch_subdag import subdag
 
 import airflow
@@ -11,7 +12,7 @@ from airflow.hooks.S3_hook import S3Hook
 from airflow.models import Variable
 
 
-DAG_NAME = 'yelp_analysis_dag'
+DAG_NAME = 'tech_analysis_dag'
 REDSHIFT_CONN_ID ='redshift'
 S3_CONN_ID ='s3'
 
@@ -69,7 +70,7 @@ task_transform_comment_to_redshift = SubDagOperator(
     task_id='task_transform_comment_to_redshift',
     subdag=subdag(
         parent_dag_name=DAG_NAME,
-        child_dag_name='task_transform_checkin_to_redshift',
+        child_dag_name='task_transform_comment_to_redshift',
         redshift_conn_id=REDSHIFT_CONN_ID,
         s3_conn_id=S3_CONN_ID,
         script_name='comments',

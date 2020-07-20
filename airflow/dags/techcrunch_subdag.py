@@ -1,5 +1,5 @@
-import emr_util as emr
-
+#import emr_util as emr
+from airflowlib import emr_util as emr
 import airflow
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator, ShortCircuitOperator
@@ -13,7 +13,7 @@ def subdag(
     redshift_conn_id,
     s3_conn_id,
     script_name,
-    table_name):
+    table_names):
 
 
     start_date = airflow.utils.dates.days_ago(51)
