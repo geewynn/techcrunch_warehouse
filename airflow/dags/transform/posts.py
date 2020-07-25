@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 
-post_df = spark.read.csv('posts.csv')
+post_df = spark.read.csv('s3a://bloggers-data/post/posts.csv')
 post_df.createOrReplaceTempView('posts')
 
 # transform data for post table
@@ -16,4 +16,4 @@ select posts._c0 post_id,
        posts._c8 number_of_retrieved_comments
 from posts
 """)
-post_table.write.parquet('posts.parquet')
+post_table.write.parquet('s3a://tech-temp/posts.parquet')

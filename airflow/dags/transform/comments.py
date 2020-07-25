@@ -1,5 +1,4 @@
 from pyspark.sql import SparkSession
-analyser = SentimentIntensityAnalyzer()
 import pyspark.sql.functions as F
 from pyspark.sql.types import *
 import re
@@ -10,8 +9,8 @@ nltk.download('vader_lexicon')
 
 
 # load data and create a temporary table
-comment_df = spark.read.csv('comments.csv')
-author_df = spark.read.csv('authors.csv')
+comment_df = spark.read.csv('s3a://bloggers-data/comments/comments.csv')
+author_df = spark.read.csv('s3a://bloggers-data/author/authors.csv')
 author_df.createOrReplaceTempView('authors')
 comment_df.createOrReplaceTempView('comments')
 
@@ -26,7 +25,7 @@ select comments._c0 comment_id,
 from comments
 """)
 # write comment table to parquet
-comment_table.write.parquet('comments.parquet')
+comment_table.write.parquet('s3a://tech-temp/comments.parquet')
 
 
 # set staging table for comment review
@@ -44,6 +43,7 @@ where comments._c3 is not null and comments._c2 is not null
 
 
 # Build the sentiment analyzer
+analyser = SentimentIntensityAnalyzer()
 def get_sentiment_analysis_score(sentence):
     score = analyser.polarity_scores(sentence)
     return score['compound']
@@ -74,4 +74,4 @@ comment_review_table_df = review_staging_df \
         "sentiment")
 
 # write to parquet
-comment_review_table_df.write.parquet('comments.parquet')
+comment_review_table_df.write.parquet('s3a://tech-temp/comments.parquet')
