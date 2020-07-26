@@ -5,8 +5,8 @@ import configparser
 config = configparser.ConfigParser()
 config.read('config.cfg')
 
-KEY='AKIAV4HXAYSZPKNWXDPH'               # = config.get('AWS','KEY')
-SECRET='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'     #  = config.get('AWS','SECRET')
+KEY='aws secret key id'               # = config.get('AWS','KEY')
+SECRET='aws secret key'     #  = config.get('AWS','SECRET')
 
 
 def client(region_name):

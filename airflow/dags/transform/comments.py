@@ -8,6 +8,13 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 nltk.download('vader_lexicon')
 
 
+spark = SparkSession \
+        .builder \
+        .appName('Wrangling Data') \
+        .getOrCreate()
+
+
+
 # load data and create a temporary table
 comment_df = spark.read.csv('s3a://bloggers-data/comments/comments.csv')
 author_df = spark.read.csv('s3a://bloggers-data/author/authors.csv')
@@ -25,7 +32,7 @@ select comments._c0 comment_id,
 from comments
 """)
 # write comment table to parquet
-comment_table.write.parquet('s3a://tech-temp/comments.parquet')
+comment_table.write.parquet('s3a://bloggers-data/temp/comments.parquet')
 
 
 # set staging table for comment review
@@ -74,4 +81,4 @@ comment_review_table_df = review_staging_df \
         "sentiment")
 
 # write to parquet
-comment_review_table_df.write.parquet('s3a://tech-temp/comments.parquet')
+comment_review_table_df.write.parquet('s3a://bloggers-data/temp/comment_review.parquet')
