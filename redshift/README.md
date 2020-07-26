@@ -12,9 +12,10 @@
  ```
 
 ### Create table configuration
+
   ```
  - config.cfg contains the configuration details for our AWS and redshift control
-  ```
+
     [CLUSTER]
       HOST=<REDSHIFT_HOST>
       DB_NAME=<REDSHIFT_DB_NAME>
