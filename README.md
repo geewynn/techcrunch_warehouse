@@ -1,6 +1,19 @@
 # TechCrunch Data Warehouse and pipeline
 ## Workflow
 
+
+# Redshift
+The airflow ETL needs the table to be ready before running the full pipeline. 
+- Run create_cluster.sh to create a redshift cluster.
+- Create the tables by running create_tables.py
+
+The configuration settings and files can be found in the export_env_variables.sh file.
+
+# EMR
+EMR cluster is needed for running the transformation files. The pyspark script can be found in the transfom folder. The emr_util file contains functions for creating cluster, starting a spark session and terminating a spark session.
+
+
+
 ### Redshift Configuration
 - create_cluster.sh contains command to create the redshift cluster.
   ```
