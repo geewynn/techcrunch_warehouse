@@ -1,11 +1,17 @@
 import configparser
 import psycopg2
 
-config = configparser.ConfigParer()
-config.read('../config.cfg')
+def main():
+    config = configparser.ConfigParser()
+    config.read('/home/godwin/airflow/blogger/config.cfg')
 
-conn = psycopg2.connect("host={} dbname={} user={} password={} port={}".format(*config['CLUSTER'].values()))
+    conn = psycopg2.connect("host={} dbname={} user={} password={} port={}".format(*config['CLUSTER'].values()))
+    
+    with conn.cursor() as cur:
+        cur.execute(open("create_tables.sql", "r").read())
+   
+    conn.commit()
+    conn.close()
 
-with conn.cursor() as cur:
-    cur.execute(open("../create_tables.sql", "r").read())
-conn.commit()
+if __name__ == "__main__":
+    main()
