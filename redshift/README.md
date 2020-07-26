@@ -1,5 +1,4 @@
-# TechCrunch Data Warehouse and pipeline
-## Workflow
+# Redshift
 
 ### Redshift Configuration
 
