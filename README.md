@@ -12,6 +12,8 @@ The configuration settings and files can be found in the export_env_variables.sh
 # EMR
 EMR cluster is needed for running the transformation files. The pyspark script can be found in the transfom folder. The emr_util file contains functions for creating cluster, starting a spark session and terminating a spark session.
 
+The EMR tasks are included in the dag file.
+
 
 
 ### Redshift Configuration
