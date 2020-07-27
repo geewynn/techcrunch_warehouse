@@ -1,4 +1,5 @@
 # Redshift
+This folder contains all you need to create a redshift cluster and create database tables.
 
 ### Redshift Configuration
 
@@ -31,6 +32,3 @@
       ETL_TEMP_S3_BUCKET=<DATA_S3>
  ```
  
- 
-My workflow
-create_tables.ql ---> create_tables.py ---> export_env_variables.sh ---> create_cluster.sh ---> config.cfg
