@@ -4,6 +4,10 @@
 This project involves building a data warehouse with an airflow pipeline. The data involved was gotten from kaggle https://www.kaggle.com/lakritidis/identifying-influential-bloggers-techcrunch/data?select=authors.csv. The data model was built with business users in mind and on hwo they can derive meaningful insights from the data such as comparing sentiments on a post, blogger with the most influence etc.
 Built a sentiment analysis model to classify blog comments as positive and negative
 
+
+The data is stored in aws S3 storage bucket, extracted and transformed with a pyspark script running on an EMR cluster with livy and then the transformed data is  converted into a parquet file format and stored back in aws S3. The transformed data is then copied to a redshift database. All these is automated with airflow.
+
+
 # Data Model
 The data was organised into a star schema dimensional model. The Star schema model consist of 3 dimensional tables and 2 fact tables
 
