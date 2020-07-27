@@ -19,6 +19,10 @@ The data was organised into a star schema dimensional model. The Star schema mod
 
 # Getting Started
 
+## Airflow
+Before starting the dag, you need to set redshift and s3 connections. Also, you will need to set airflow variables.
+This configuration can be done on airflow UI by navigating to the connections and variables section under the admin tab.
+
 ## Redshift
 The airflow ETL needs the table to be ready before running the full pipeline. 
 - Run create_cluster.sh to create a redshift cluster.
@@ -30,8 +34,3 @@ The configuration settings and files can be found in the export_env_variables.sh
 EMR cluster is needed for running the transformation files. The pyspark script can be found in the transfom folder. The emr_util file contains functions for creating cluster, starting a spark session and terminating a spark session.
 
 The EMR tasks are included in the dag file.
-
- 
- 
-My workflow
-create_tables.ql ---> create_tables.py ---> export_env_variables.sh ---> create_cluster.sh ---> config.cfg
