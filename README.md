@@ -27,6 +27,9 @@ The data was organised into a star schema dimensional model. The Star schema mod
 Before starting the dag, you need to set redshift and s3 connections. Also, you will need to set airflow variables.
 This configuration can be done on airflow UI by navigating to the connections and variables section under the admin tab.
 
+The airflow graph view 
+![](https://github.com/geewynn/techcrunch_warehouse/blob/master/images/airflow%20graph%20view.jpg)
+
 ## Redshift
 The airflow ETL needs the table to be ready before running the full pipeline. 
 - Run create_cluster.sh to create a redshift cluster.
